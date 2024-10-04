@@ -59,7 +59,7 @@ const Documents = () => {
             <th className="px-4 py-2 border font-light">Date Issued</th>
             <th className="px-4 py-2 border font-light">Issuing Authority</th>
             <th className="px-4 py-2 border font-light">Access Level</th>
-            <th className="px-4 py-2 border ">Actions</th>
+            <th className="px-4 py-2 border font-light">Actions</th>
           </tr>
         </thead>
         <tbody>
