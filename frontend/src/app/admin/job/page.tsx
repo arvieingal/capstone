@@ -4,9 +4,9 @@ import React, { ChangeEvent, useState } from 'react'
 
 // Sample job data (replace this with actual data fetching logic)
 const jobsData = [
-  { id: 1, title: 'Software Engineer', company: 'Tech Co', status: 'Open' },
-  { id: 2, title: 'Product Manager', company: 'Startup Inc', status: 'Closed' },
-  { id: 3, title: 'UX Designer', company: 'Design Studio', status: 'Open' },
+  { id: 1, title: 'Software Engineer', company: 'Tech Co', location: "Lumbang Public Market", status: 'Open' },
+  { id: 2, title: 'Product Manager', company: 'Startup Inc', location: "Lumbang Public Market", status: 'Closed' },
+  { id: 3, title: 'UX Designer', company: 'Design Studio', location: "Lumbang Public Market", status: 'Open' },
   
 ]
 
@@ -44,11 +44,14 @@ const Jobs = () => {
       <table className="w-full border-collapse border border-gray-300">
         <thead>
           <tr className="bg-green-800 text-white">
-            <th className="border border-gray-300 p-2">ID</th>
-            <th className="border border-gray-300 p-2">Title</th>
-            <th className="border border-gray-300 p-2">Company</th>
-            <th className="border border-gray-300 p-2">Status</th>
+            <th className="border border-gray-300 p-2 font-light">ID</th>
+            <th className="border border-gray-300 p-2 font-light">Job Name</th>
+            <th className="border border-gray-300 p-2 font-light">Company</th>
+            <th className="border border-gray-300 p-2 font-light">Location</th>
+            <th className="border border-gray-300 p-2 font-light">Status</th>
           </tr>
+        
+         
         </thead>
         <tbody>
           {jobsData.map((job) => (
@@ -56,6 +59,7 @@ const Jobs = () => {
               <td className="border border-gray-300 p-2">{job.id}</td>
               <td className="border border-gray-300 p-2">{job.title}</td>
               <td className="border border-gray-300 p-2">{job.company}</td>
+              <td className="border border-gray-300 p-2">{job.location}</td>
               <td className="border border-gray-300 p-2">{job.status}</td>
             </tr>
           ))}

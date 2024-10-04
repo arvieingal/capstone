@@ -7,8 +7,8 @@ const Residents = () => {
   const router = useRouter();
   // Mock data for Residents
   const Residents = [
-    { id: 1, fullName: "John Doe", age: 25, category: "Youth", address: "123 Main St", contactNo: "123-456-7890", email: "john@example.com", status: "Active" },
-    { id: 2, fullName: "Jane Smith", age: 40, category: "Adult", address: "456 Elm St", contactNo: "987-654-3210", email: "jane@example.com", status: "Inactive" },
+    { id: 1, fullName: "John Doe", age: 25,birthdate:"May 05,2001" ,gender: "Male", category: "Youth", sitio: "123 Main St", contactNo: "123-456-7890", email: "john@example.com", status: "Active" },
+    { id: 2, fullName: "Jane Smith", age: 40, birthdate:"May 05,1989" ,gender: "Female",category: "Adult", sitio: "456 Elm St", contactNo: "987-654-3210", email: "jane@example.com", status: "Inactive" },
     // Add more mock data as needed
   ];
 
@@ -37,15 +37,17 @@ const Residents = () => {
       <table className="w-full border-collapse border border-gray-300">
         <thead>
           <tr className="bg-green-800 text-white">
-            <th className="border border-gray-300 p-2">ID</th>
-            <th className="border border-gray-300 p-2">Full Name</th>
-            <th className="border border-gray-300 p-2">Age</th>
-            <th className="border border-gray-300 p-2">Category</th>
-            <th className="border border-gray-300 p-2">Address</th>
-            <th className="border border-gray-300 p-2">Contact No.</th>
-            <th className="border border-gray-300 p-2">Email</th>
-            <th className="border border-gray-300 p-2">Status</th>
-            <th className="border border-gray-300 p-2">Options</th>
+            <th className="border border-gray-300 p-2 font-light">ID</th>
+            <th className="border border-gray-300 p-2 font-light">Full Name</th>
+            <th className="border border-gray-300 p-2 font-light">Age</th>
+            <th className="border border-gray-300 p-2 font-light">Gender</th>
+            <th className="border border-gray-300 p-2 font-light">Birthdate</th>
+            <th className="border border-gray-300 p-2 font-light">Category</th>
+            <th className="border border-gray-300 p-2 font-light">Sitio</th>
+            <th className="border border-gray-300 p-2 font-light">Contact No.</th>
+            <th className="border border-gray-300 p-2 font-light">Email</th>
+            <th className="border border-gray-300 p-2 font-light">Status</th>
+            <th className="border border-gray-300 p-2 font-light">Options</th>
           </tr>
         </thead>
         <tbody>
@@ -54,8 +56,10 @@ const Residents = () => {
               <td className="border border-gray-300 p-2">{citizen.id}</td>
               <td className="border border-gray-300 p-2">{citizen.fullName}</td>
               <td className="border border-gray-300 p-2">{citizen.age}</td>
+              <td className="border border-gray-300 p-2">{citizen.gender}</td>
+              <td className="border border-gray-300 p-2">{citizen.birthdate}</td>
               <td className="border border-gray-300 p-2">{citizen.category}</td>
-              <td className="border border-gray-300 p-2">{citizen.address}</td>
+              <td className="border border-gray-300 p-2">{citizen.sitio}</td>
               <td className="border border-gray-300 p-2">{citizen.contactNo}</td>
               <td className="border border-gray-300 p-2">{citizen.email}</td>
               <td className="border border-gray-300 p-2">{citizen.status}</td>

@@ -104,55 +104,59 @@ export default function ScheduleEvent() {
     }
 
     return (
-        <div className='h-screen flex justify-center items-center'>
-            <form action="" onSubmit={handleScheduleEvent} className='space-y-4 p-4 border-2 border-gray-300 rounded'>
+        <div className="w-full px-4 sm:px-6 lg:px-8 ">
+        <div className="w-full text-center">
+          <h1 className="mb-8 flex items-center justify-center pt-8 sm:pt-12 text-2xl font-bold">
+          ADD EVENTS
+          </h1>
+        </div>
+        <div className="w-full space-y-6">
+            <form action="" onSubmit={handleScheduleEvent} className='space-y-8 p-4 '>
                 <div>
-                    <label htmlFor="summary">Event Title</label>
+                    <label htmlFor="summary" className="block mb-1">Event Title</label>
                     <input
                         type='text'
                         name='summary'
                         value={eventDetails.summary}
                         onChange={handleChange}
-                        className='block border-2 p-2 rounded w-full'
+                         className="w-full max-w-md rounded-lg border px-3 py-2 "
                         required
                     />
                 </div>
 
                 <div>
-                    <label htmlFor="description">Description</label>
+                    <label htmlFor="description" className="block mb-1">Description</label>
                     <textarea
                         name='description'
                         value={eventDetails.description}
                         onChange={handleChange}
-                        className='block border-2 p-2 rounded w-full'
+                        className="w-full max-w-md rounded-lg border px-3 py-2"
                         required
                     />
                 </div>
 
                 <div>
-                    <label htmlFor="start">Start Time</label>
+                    <label htmlFor="start" className="block mb-1">Start Time</label>
                     <input
                         type='datetime-local'
                         name='start'
                         value={eventDetails.start}
                         onChange={handleChange}
-                        className='block border-2 p-2 rounded w-full'
+                      className="w-full max-w-md rounded-lg border px-3 py-2"
                         required
                     />
                 </div>
-
                 <div>
-                    <label htmlFor="end">End Time</label>
+                    <label htmlFor="end" className="block mb-1">End Time</label>
                     <input
                         type='datetime-local'
                         name='end'
                         value={eventDetails.end}
                         onChange={handleChange}
-                        className='block border-2 p-2 rounded w-full'
+                       className="w-full max-w-md rounded-lg border px-3 py-2"
                         required
                     />
                 </div>
-
                 <div>
                     <label>Attendees</label>
                     {eventDetails.attendees.map((attendee, index) => (
@@ -161,7 +165,7 @@ export default function ScheduleEvent() {
                                 type='email'
                                 value={attendee.email}
                                 onChange={(e) => handleAttendeeChange(index, e)}
-                                className="border-2 p-2 rounded w-full"
+                                className="w-full max-w-md rounded-lg border px-3 py-2"
                                 placeholder="Attendee email"
                                 required
                             />
@@ -181,5 +185,7 @@ export default function ScheduleEvent() {
                 {message && <p>{message}</p>}
             </form>
         </div>
+        </div>
+    
     )
 }

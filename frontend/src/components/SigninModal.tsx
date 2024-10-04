@@ -60,14 +60,14 @@ const SignupModal: React.FC<SignupModalProps> = ({ onClose, onSwitchToLogin }) =
 
   const handleNext = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setCurrentStep(2); // Move to the next step
+    setCurrentStep(2); 
   };
 
   
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     
-    // Client-side validation
+
     if (formData.password !== formData.confirmPassword) {
       alert("Passwords do not match");
       return;

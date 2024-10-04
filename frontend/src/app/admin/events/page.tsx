@@ -32,11 +32,12 @@ const Events = () => {
       </div>
       <table className='w-full border-collapse border border-gray-300 '>
         <thead>
-          <tr className='bg-green-800 text-white'>
-            <th className='border border-gray-300 p-2'>Event Name</th>
-            <th className='border border-gray-300 p-2'>Date</th>
-            <th className='border border-gray-300 p-2'>Location</th>
-            <th className='border border-gray-300 p-2'>Actions</th>
+          <tr className='bg-green-800 text-white '>
+            <th className='border border-gray-300 p-2 font-light'>Event Title</th>
+            <th className='border border-gray-300 p-2 font-light'>Start Date</th>
+            <th className='border border-gray-300 p-2 font-light'>End Date</th>
+            <th className='border border-gray-300 p-2 font-light'>Location</th>
+            <th className='border border-gray-300 p-2 font-light'>Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -44,7 +45,8 @@ const Events = () => {
           <tr>
             <td className='border border-gray-300 p-2'>Sample Event</td>
             <td className='border border-gray-300 p-2'>2024-01-01</td>
-            <td className='border border-gray-300 p-2'>New York</td>
+            <td className='border border-gray-300 p-2'>2024-01-06</td>
+            <td className='border border-gray-300 p-2'>Lumbang Brgy.Hall</td>
             <td className='border border-gray-300 p-2'>
               <button className='bg-blue-500 text-white px-2 py-1 rounded mr-2'>Edit</button>
               <button className='bg-red-500 text-white px-2 py-1 rounded'>Delete</button>

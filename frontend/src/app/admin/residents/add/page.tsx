@@ -8,6 +8,7 @@ const AddResidents = () => {
     fullName: "",
     age: "",
     category: "",
+    gender:"",
     address: "",
     contactNo: "",
     email: "",
@@ -55,6 +56,21 @@ const AddResidents = () => {
           />
         </div>
         <div className="mb-4">
+          <label htmlFor="gender" className="block mb-2">Gender</label>
+          <select
+            id="gender"
+            name="gender"
+            value={formData.gender}
+            onChange={handleChange}
+            className="w-full border border-gray-300 rounded-md px-3 py-2"
+            required
+          >
+            <option value="">Select a gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Youth</option>
+          </select>
+        </div>
+        <div className="mb-4">
           <label htmlFor="category" className="block mb-2">Category</label>
           <select
             id="category"
@@ -65,6 +81,7 @@ const AddResidents = () => {
             required
           >
             <option value="">Select a category</option>
+            <option value="Children">Children</option>
             <option value="Youth">Youth</option>
             <option value="Adult">Adult</option>
             <option value="Senior">Senior</option>

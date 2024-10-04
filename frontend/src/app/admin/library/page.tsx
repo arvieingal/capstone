@@ -42,13 +42,13 @@ const Library: React.FC = () => {
         <table className="w-full border-collapse border border-gray-300">
         <thead>
           <tr className="bg-green-800 text-white">
-            <th className="border border-gray-300 p-2">Id</th>
-            <th className="border border-gray-300 p-2">Title</th>
-            <th className="border border-gray-300 p-2">Category</th>
-            <th className="border border-gray-300 p-2">Type</th>
-            <th className="border border-gray-300 p-2">Date Added</th>
-            <th className="border border-gray-300 p-2">Status</th>
-            <th className="border border-gray-300 p-2">Options</th>
+            <th className="border border-gray-300 p-2 font-light">Id</th>
+            <th className="border border-gray-300 p-2 font-light">Title</th>
+            <th className="border border-gray-300 p-2 font-light">Category</th>
+            <th className="border border-gray-300 p-2 font-light">Type</th>
+            <th className="border border-gray-300 p-2 font-light">Date Added</th>
+            <th className="border border-gray-300 p-2 font-light">Status</th>
+            <th className="border border-gray-300 p-2 font-light">Options</th>
           </tr>
         </thead>
         <tbody>

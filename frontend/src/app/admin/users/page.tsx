@@ -65,15 +65,17 @@ const Users = () => {
         </div>
         <div className="overflow-x-auto rounded-lg">
           <table className="min-w-full bg-white border border-gray-300 rounded-lg">
-            <thead className="bg-green-700 text-white">
+            <thead className="bg-green-700 text-white ">
               <tr>
-                <th className="py-2 px-4 border-b border-r ">ID</th>
-                <th className="py-2 px-4 border-b border-r">Name</th>
-                <th className="hidden md:table-cell py-2 px-4 border-b border-r">Email</th>
-                <th className="hidden lg:table-cell py-2 px-4 border-b border-r">Phone</th>
-                <th className="py-2 px-4 border-b border-r">Role</th>
-                <th className="hidden sm:table-cell py-2 px-4 border-b border-r">Status</th>
-                <th className="py-2 px-4 border-b">Options</th>
+                <th className="py-2  border-b border-r font-light">ID</th>
+                <th className="py-2 px-4 border-b border-r font-light">Full Name</th>
+                <th className="hidden md:table-cell py-2 px-4 border-b border-r font-light">Email</th>
+                <th className="hidden lg:table-cell py-2 px-4 border-b border-r font-light">Phone No.</th>
+                <th className="py-2  border-b border-r font-light">Employment Status</th>
+                <th className="py-2  border-b border-r font-light">Address</th>
+                <th className="hidden sm:table-cell py-2 px-4 border-b border-r font-light">Status</th>
+                <th className="py-2  border-b border-r font-light">Role</th>
+                <th className="py-2 px-4 border-b font-light">Options</th>
               </tr>
             </thead>
             <tbody>
