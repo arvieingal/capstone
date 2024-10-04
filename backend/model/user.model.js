@@ -21,7 +21,7 @@ const User = {
 
   createUser: async (userData) => {
     const {
-      fullName,          // full name in a single field
+      fullName,         
       username,
       email,
       phoneNo,
@@ -31,7 +31,7 @@ const User = {
       addressMunicipality,
       barangay,
       sitio,
-      password,         // The raw password from the client
+      password,        
       agreeTerms
     } = userData;
     
@@ -57,12 +57,12 @@ const User = {
         addressMunicipality,
         barangay,
         sitio,
-        hashedPassword,  // Use the hashed password here
+        hashedPassword,  
         agreeTerms
       ]);
       
-      console.log(result);  // Check what this returns
-      return result.insertId;  // Return the new user ID or handle accordingly
+      console.log(result);  
+      return result.insertId; 
       
     } catch (err) {
       console.error('Error executing query:', err);
