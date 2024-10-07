@@ -2,31 +2,24 @@
 import { useRouter } from "next/navigation";
 import React, { useState } from 'react'
 
+// Define the Document interface with possible values
+interface Document {
+  id: string;
+  name: string;
+  type: 'PDF' | 'DOCX' | 'XLSX'; // Possible values for type
+  category: string;
+  dateIssued: string;
+  issuingAuthority: string;
+  accessLevel: 'Confidential' | 'Internal' | 'Public'; // Possible values for access level
+}
+
 const Documents = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const router = useRouter(); // {{ edit_1 }}
   
-  const documents = [
-    {
-      id: '001',
-      name: 'Annual Report 2023',
-      type: 'PDF',
-      category: 'Financial',
-      dateIssued: '2023-12-31',
-      issuingAuthority: 'Finance Department',
-      accessLevel: 'Confidential',
-    },
-    {
-      id: '002',
-      name: 'Employee Handbook',
-      type: 'DOCX',
-      category: 'HR',
-      dateIssued: '2023-01-15',
-      issuingAuthority: 'Human Resources',
-      accessLevel: 'Internal',
-    },
-    // Add more dummy data as needed
-  ]
+  // Placeholder for actual document data retrieval
+  const documents: Document[] = []; // {{ edit_2 }}
+
   function handleAddDocuments(event: React.MouseEvent<HTMLButtonElement>): void {
     router.push('/admin/documents/add');
   }

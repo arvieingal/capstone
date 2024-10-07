@@ -5,14 +5,24 @@ import React, { useState } from "react";
 const Residents = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const router = useRouter();
+  
   // Mock data for Residents
-  const Residents = [
-    { id: 1, fullName: "John Doe", age: 25,birthdate:"May 05,2001" ,gender: "Male", category: "Youth", sitio: "123 Main St", contactNo: "123-456-7890", email: "john@example.com", status: "Active" },
-    { id: 2, fullName: "Jane Smith", age: 40, birthdate:"May 05,1989" ,gender: "Female",category: "Adult", sitio: "456 Elm St", contactNo: "987-654-3210", email: "jane@example.com", status: "Inactive" },
-    // Add more mock data as needed
-  ];
+  interface Resident { // Changed from Residents to Resident for singular
+    _id: string;
+    fullName: string;
+    age: string;
+    gender: string;
+    birthdate: string;
+    category: string;
+    sitio: string;
+    contact_number: string;
+    email: string;
+  }
 
-  function handleAddResidents(event: React.MouseEvent<HTMLButtonElement>): void {
+  // Define residentData as an empty array
+  const residentData: Resident[] = []; // Removed mock data for residents
+
+  function handleAddResident(event: React.MouseEvent<HTMLButtonElement>): void {
     router.push('/admin/residents/add');
   }
 
@@ -22,7 +32,7 @@ const Residents = () => {
       <div className='flex flex-col md:flex-row gap-2 mb-4 pt-[2rem]'>
         <button 
           className='bg-green-800 text-white px-4 py-2 rounded-md w-full md:w-[10rem]'
-          onClick={handleAddResidents}
+          onClick={handleAddResident}
         >
           Add Residents
         </button>
@@ -46,23 +56,21 @@ const Residents = () => {
             <th className="border border-gray-300 p-2 font-light">Sitio</th>
             <th className="border border-gray-300 p-2 font-light">Contact No.</th>
             <th className="border border-gray-300 p-2 font-light">Email</th>
-            <th className="border border-gray-300 p-2 font-light">Status</th>
             <th className="border border-gray-300 p-2 font-light">Options</th>
           </tr>
         </thead>
         <tbody>
-          {Residents.map((citizen) => (
-            <tr key={citizen.id}>
-              <td className="border border-gray-300 p-2">{citizen.id}</td>
-              <td className="border border-gray-300 p-2">{citizen.fullName}</td>
-              <td className="border border-gray-300 p-2">{citizen.age}</td>
-              <td className="border border-gray-300 p-2">{citizen.gender}</td>
-              <td className="border border-gray-300 p-2">{citizen.birthdate}</td>
-              <td className="border border-gray-300 p-2">{citizen.category}</td>
-              <td className="border border-gray-300 p-2">{citizen.sitio}</td>
-              <td className="border border-gray-300 p-2">{citizen.contactNo}</td>
-              <td className="border border-gray-300 p-2">{citizen.email}</td>
-              <td className="border border-gray-300 p-2">{citizen.status}</td>
+          {residentData.map((resident) => ( 
+            <tr key={resident._id}> 
+              <td className="border border-gray-300 p-2">{resident._id}</td>
+              <td className="border border-gray-300 p-2">{resident.fullName}</td>
+              <td className="border border-gray-300 p-2">{resident.age}</td>
+              <td className="border border-gray-300 p-2">{resident.gender}</td>
+              <td className="border border-gray-300 p-2">{resident.birthdate}</td>
+              <td className="border border-gray-300 p-2">{resident.category}</td>
+              <td className="border border-gray-300 p-2">{resident.sitio}</td>
+              <td className="border border-gray-300 p-2">{resident.contact_number}</td>
+              <td className="border border-gray-300 p-2">{resident.email}</td>
               <td className="border border-gray-300 p-2">
                 <button className="bg-blue-500 text-white px-2 py-1 rounded mr-2">Edit</button>
                 <button className="bg-red-500 text-white px-2 py-1 rounded">Delete</button>

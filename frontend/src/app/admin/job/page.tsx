@@ -1,17 +1,22 @@
 "use client"
 import { useRouter } from 'next/navigation';
-import React, { ChangeEvent, useState } from 'react'
+import React, { ChangeEvent, useState, useEffect } from 'react'
 
 // Sample job data (replace this with actual data fetching logic)
-const jobsData = [
-  { id: 1, title: 'Software Engineer', company: 'Tech Co', location: "Lumbang Public Market", status: 'Open' },
-  { id: 2, title: 'Product Manager', company: 'Startup Inc', location: "Lumbang Public Market", status: 'Closed' },
-  { id: 3, title: 'UX Designer', company: 'Design Studio', location: "Lumbang Public Market", status: 'Open' },
-  
-]
-
+interface Job {
+  _id: string;
+  job_title: string;
+  company: string;
+  startDate: string;
+  endDate: string;
+  description: string;
+  location: string;
+  attendees: string;
+  status: string;
+}
 const Jobs = () => {
   const [searchTerm, setSearchTerm] = useState('');
+  const [filteredJob, setFilteredJob] = useState<Job[]>([]); // Define filteredJob state
   const router = useRouter();
 
   function handleSearch(event: ChangeEvent<HTMLInputElement>): void {
@@ -21,7 +26,10 @@ const Jobs = () => {
   function handleAddJob(event: React.MouseEvent<HTMLButtonElement>): void {
     // Implement navigation to add job page
     router.push('/admin/job/add');
-  }
+  }  useEffect(() => {
+    const jobs: Job[] = []; 
+    setFilteredJob(jobs.filter(job => job.job_title.toLowerCase().includes(searchTerm.toLowerCase())));
+  }, [searchTerm]);
 
   return (
     <div className="p-4 pt-[4rem]">
@@ -45,21 +53,25 @@ const Jobs = () => {
         <thead>
           <tr className="bg-green-800 text-white">
             <th className="border border-gray-300 p-2 font-light">ID</th>
-            <th className="border border-gray-300 p-2 font-light">Job Name</th>
+            <th className="border border-gray-300 p-2 font-light">Job Title</th> 
             <th className="border border-gray-300 p-2 font-light">Company</th>
             <th className="border border-gray-300 p-2 font-light">Location</th>
+            <th className="border border-gray-300 p-2 font-light">Start Date</th>
+            <th className="border border-gray-300 p-2 font-light">End Date</th>
             <th className="border border-gray-300 p-2 font-light">Status</th>
           </tr>
         
          
         </thead>
         <tbody>
-          {jobsData.map((job) => (
-            <tr key={job.id}>
-              <td className="border border-gray-300 p-2">{job.id}</td>
-              <td className="border border-gray-300 p-2">{job.title}</td>
+        {filteredJob.map((job: Job) => (
+                <tr key={job._id} className="hover:bg-gray-50">
+                  <td className="py-2 px-4 border-b border-r">{job._id}</td>
+              <td className="border border-gray-300 p-2">{job.job_title}</td>
               <td className="border border-gray-300 p-2">{job.company}</td>
               <td className="border border-gray-300 p-2">{job.location}</td>
+              <td className="border border-gray-300 p-2">{job.startDate}</td>
+              <td className="border border-gray-300 p-2">{job.endDate}</td>
               <td className="border border-gray-300 p-2">{job.status}</td>
             </tr>
           ))}

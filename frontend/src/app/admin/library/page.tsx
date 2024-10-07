@@ -2,18 +2,20 @@
 import React, { ChangeEvent, useState } from 'react'
 import { useRouter } from 'next/navigation'
 
-const libraryItems = [
-  { id: 1, title: 'Introduction to React', category: 'Programming', type: 'Article', dateAdded: '2023-04-15', status: 'Active', link: 'https://example.com/react-intro' },
-  { id: 2, title: 'Company Policy', category: 'HR', type: 'Document', dateAdded: '2023-04-10', status: 'Active', link: 'https://example.com/policy.pdf' },
-  { id: 3, title: 'Useful Resources', category: 'General', type: 'Link', dateAdded: '2023-04-05', status: 'Inactive', link: 'https://example.com/resources' },
-]
+interface Document {
+  _id: string;
+  document_title: string;
+  category: string;
+  type: string;
+  date_added: string;
+}
 
 const Library: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('')
+  const [filteredUsers, setFilteredUsers] = useState<Document[]>([]); 
   const router = useRouter()
 
   function handleAddLibrary(event: React.MouseEvent<HTMLButtonElement>): void {
-    // Navigate to the add library item page
     router.push('/admin/library/add')
   }
 
@@ -43,23 +45,21 @@ const Library: React.FC = () => {
         <thead>
           <tr className="bg-green-800 text-white">
             <th className="border border-gray-300 p-2 font-light">Id</th>
-            <th className="border border-gray-300 p-2 font-light">Title</th>
+            <th className="border border-gray-300 p-2 font-light"> Document Title</th>
             <th className="border border-gray-300 p-2 font-light">Category</th>
             <th className="border border-gray-300 p-2 font-light">Type</th>
             <th className="border border-gray-300 p-2 font-light">Date Added</th>
-            <th className="border border-gray-300 p-2 font-light">Status</th>
             <th className="border border-gray-300 p-2 font-light">Options</th>
           </tr>
         </thead>
         <tbody>
-          {libraryItems.map((item) => (
-            <tr key={item.id}>
-              <td className="border border-gray-300 p-2">{item.id}</td>
-              <td className="border border-gray-300 p-2">{item.title}</td>
-              <td className="border border-gray-300 p-2">{item.category}</td>
-              <td className="border border-gray-300 p-2">{item.type}</td>
-              <td className="border border-gray-300 p-2">{item.dateAdded}</td>
-              <td className="border border-gray-300 p-2">{item.status}</td>
+        {filteredUsers.map(documents => ( // Use 'documents' instead of 'item'
+            <tr key={documents._id}> // Use 'documents._id' for the key
+              <td className="border border-gray-300 p-2">{documents._id}</td> 
+              <td className="border border-gray-300 p-2">{documents.document_title}</td> 
+              <td className="border border-gray-300 p-2">{documents.category}</td> 
+              <td className="border border-gray-300 p-2">{documents.type}</td> 
+              <td className="border border-gray-300 p-2">{documents.date_added}</td> 
               <td className="border border-gray-300 p-2">
                 <button className="bg-blue-500 text-white px-2 py-1 rounded mr-2">Edit</button>
                 <button className="bg-red-500 text-white px-2 py-1 rounded">Delete</button>
