@@ -26,7 +26,7 @@ const Library: React.FC = () => {
       <h1 className="text-2xl font-bold mb-4 flex items-center justify-center">Manage Library</h1>
       <div className='flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-4 mb-4 md:mb-6'>
           <button 
-            className='bg-green-700 text-white px-4 py-2 rounded-md mb-2 md:mb-0 w-[10rem]'
+            className='bg-green-800 text-white px-4 py-2 rounded-md mb-2 md:mb-0 w-[10rem]'
             onClick={handleAddLibrary}
           >
             Add Library

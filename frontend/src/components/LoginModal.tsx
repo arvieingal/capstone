@@ -11,6 +11,7 @@ interface LoginModalProps {
 }
 
 const Login: React.FC<LoginModalProps> = ({ onClose }) => {
+  const [emailOrUsername, setEmailOrUsername] = useState('');
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -18,9 +19,34 @@ const Login: React.FC<LoginModalProps> = ({ onClose }) => {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [isSignupModalOpen, setIsSignupModalOpen] = useState(false);
   const modalRef = useRef<HTMLDivElement>(null);
-
   const router = useRouter();
 
+  const handleLogin = async () => {
+    const response = await fetch('/api/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ emailOrUsername, password }),
+    });
+  
+    const data = await response.json();
+    
+    if (response.ok) {
+      localStorage.setItem('token', data.token);  // Store the token
+      localStorage.setItem('role', data.role);    // Store the user role
+      redirectUserBasedOnRole(data.role);         // Redirect based on the role
+    } else {
+      alert('Login failed');
+    }
+  };
+  
+  const redirectUserBasedOnRole = (role: string) => {
+    if (role === 'admin') {
+      router.push('/admin/dashboard');
+    } else {
+      router.push('/home');  // Redirect general users to the site
+    }
+  };
+  
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (modalRef.current && !modalRef.current.contains(event.target as Node)) {
@@ -85,11 +111,11 @@ const Login: React.FC<LoginModalProps> = ({ onClose }) => {
         <SignupModal onClose={handleCloseSignupModal} />
       ) : (
         <div ref={modalRef} className="w-full max-w-sm rounded-2xl bg-white p-8 shadow-lg ">
-          <form className="space-y-4 " onSubmit={handleSubmit}>
+           <form onSubmit={handleLogin} className="space-y-4">
             {error && <div className="text-red-500 text-sm">{error}</div>}
             <div>
               <label
-                htmlFor="login"
+                htmlFor="emailOrUsername"
                 className="block text-sm font-medium text-gray-700"
               >
                 Username or Email
@@ -104,12 +130,12 @@ const Login: React.FC<LoginModalProps> = ({ onClose }) => {
                   alt="User"
                 />
                 <input
-                  type="text"
-                  id="login"
+                   id="emailOrUsername"
+                   type="text"
+                   value={emailOrUsername}
+                   onChange={(e) => setEmailOrUsername(e.target.value)}
                   className="ml-2 flex-1 focus:outline-none"
                   placeholder="Enter username or email"
-                  value={login}
-                  onChange={(e) => setLogin(e.target.value)}
                   required
                 />
               </div>
@@ -140,8 +166,9 @@ const Login: React.FC<LoginModalProps> = ({ onClose }) => {
                   onChange={(e) => setPassword(e.target.value)}
                   required
                 />
+                 {error && <p className="text-red-500">{error}</p>}
                 <button
-                  type="button"
+                  type="submit"
                   onClick={togglePasswordVisibility}
                   className="focus:outline-none"
                 >

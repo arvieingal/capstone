@@ -5,21 +5,46 @@ import Button from "@/components/AdminButton";
 const Add = () => {
   const [formData, setFormData] = useState({
     fullName: "",
-    username: "", // Ensure this field is included in the form
+    username: "",
     email: "",
-    phoneNo: "",  
-    employmentStatus: "",  
-    addressMunicipality: "Cebu", 
-    barangay: "", 
-    sitio: "",  
+    phone_number: "",  
+    employment_status: "",  
+    Municipality: "Cebu", 
+    barangay: "Lumbang", 
+    sitio: "",
+    role: "", // Included role in required fields
+    status:"",  
     password: "",
     confirmPassword: "",
     agreeTerms: false,
   });
 
   function handleAdd(): void {
-    // Implement the logic to add a user
-    console.log("User added:", formData);
+    // Check if all required fields are filled
+    const requiredFields = [
+      formData.fullName,
+      formData.username,
+      formData.email,
+      formData.phone_number,
+      formData.employment_status,
+      formData.Municipality,
+      formData.barangay,
+      formData.sitio,
+      formData.role,
+      formData.status,
+    ];
+    
+    const allFieldsFilled = requiredFields.every(value => value !== "");
+    
+    if (allFieldsFilled) {
+      // Show an alert when the user is added
+      alert("User Added");
+      // Implement the logic to add a user
+      console.log("User added:", formData);
+    } else {
+      // Alert if not all required fields are filled
+      alert("Please fill in all required fields before adding a user.");
+    }
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
@@ -92,14 +117,14 @@ const Add = () => {
             />
           </div>
           <div>
-          <label htmlFor="phoneNo" className="block text-sm font-medium text-gray-700">
+          <label htmlFor="phone_number" className="block text-sm font-medium text-gray-700">
                   Phone No.
                 </label>
                 <input
                   type="tel"
-                  id="phoneNo"
-                  name="phoneNo"
-                  value={formData.phoneNo}
+                  id="phone_nunber"
+                  name="phone_number"
+                  value={formData.phone_number}
                   onChange={handleChange}
               className="w-full max-w-md rounded-lg border px-3 py-2"
               required
@@ -110,9 +135,9 @@ const Add = () => {
                   Employment Status
                 </label>
                 <select
-                  id="employmentStatus"
-                  name="employmentStatus"
-                  value={formData.employmentStatus}
+                  id="employment_status"
+                  name="employment_status"
+                  value={formData.employment_status}
                   onChange={handleChange}
                  className="w-full max-w-md rounded-lg border px-3 py-2"
                   required
@@ -131,7 +156,7 @@ const Add = () => {
                 <select
                   id="addressMunicipality"
                   name="addressMunicipality"
-                  value={formData.addressMunicipality}
+                  value={formData.Municipality}
                   onChange={handleChange}
                   className="w-full max-w-md rounded-lg border px-3 py-2"
                   required
@@ -151,40 +176,7 @@ const Add = () => {
                   className="w-full max-w-md rounded-lg border px-3 py-2"
                   required
                 >
-                  <option value="">Select Barangay</option>
-                  <option value="Ablayan">Ablayan</option>
-                  <option value="Babayongan">Babayongan</option>
-                  <option value="Balud">Balud</option>
-                  <option value="Banhigan">Banhigan</option>
-                  <option value="Bulak">Bulak</option>
-                  <option value="Caleriohan">Caleriohan</option>
-                  <option value="Caliongan">Caliongan</option>
-                  <option value="Casay">Casay</option>
-                  <option value="Catolohan">Catolohan</option>
-                  <option value="Cawayan">Cawayan</option>
-                  <option value="Consolacion">Consolacion</option>
-                  <option value="Coro">Coro</option>
-                  <option value="Dugyan">Dugyan</option>
-                  <option value="Dumalan">Dumalan</option>
-                  <option value="Jolomaynon">Jolomaynon</option>
-                  <option value="Lanao">Lanao</option>
-                  <option value="Langkas">Langkas</option>
                   <option value="Lumbang">Lumbang</option>
-                  <option value="Malones">Malones</option>
-                  <option value="Maloray">Maloray</option>
-                  <option value="Mananggal">Mananggal</option>
-                  <option value="Manlapay">Manlapay</option>
-                  <option value="Mantalongon">Mantalongon</option>
-                  <option value="Nalhub">Nalhub</option>
-                  <option value="Obo">Obo</option>
-                  <option value="Obong">Obong</option>
-                  <option value="Panas">Panas</option>
-                  <option value="Poblacion">Poblacion</option>
-                  <option value="Sacsac">Sacsac</option>
-                  <option value="Salug">Salug</option>
-                  <option value="Tabon">Tabon</option>
-                  <option value="Tapun">Tapun</option>
-                  <option value="Tuba">Tuba</option>
                 </select>
           </div>
           <div>
@@ -214,8 +206,10 @@ const Add = () => {
           <div>
             <label htmlFor="role" className="mb-2 block text-sm font-medium">Role</label>
             <select
-              id="role"
-              name="role"
+               id="role"
+               name="role"
+               value={formData.role}
+               onChange={handleChange}
               className="w-full max-w-md rounded-lg border px-3 py-2"
               required
             >
@@ -229,6 +223,8 @@ const Add = () => {
             <select
               id="status"
               name="status"
+              value={formData.status}
+              onChange={handleChange}
               className="w-full max-w-md rounded-lg border px-3 py-2"
               required
             >

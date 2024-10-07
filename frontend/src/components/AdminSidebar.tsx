@@ -8,9 +8,13 @@ const AdminSidebar = () => {
   const pathname = usePathname();
 
   const isActive = (path: string) => pathname === path;
+  const handleLogout = () => {
+    // Add your logout logic here
+  };
+
   return (
     <div className="flex h-screen">
-      <aside className="w-64 bg-green-800 p-4 text-white">
+      <aside className="w-64 bg-[#1A6553] text-white">
         <div className="space-y-6 pl-[1rem]">
           <div className="flex flex-col gap-[10px]">
             <div className="flex items-center pt-[10rem] text-l font-medium">
@@ -109,6 +113,10 @@ const AdminSidebar = () => {
                 </span>
               </Link>
             </div>
+            <div className="flex items-center pl-[1rem] text-l pt-[18rem] font-medium cursor-pointer" onClick={handleLogout}>
+                <Image src="/admin/logout.png" alt="Logout" width={30} height={20} />
+                <span className="pl-[1.5rem]">Logout</span>
+              </div>
           </div>
         </div>
       </aside>

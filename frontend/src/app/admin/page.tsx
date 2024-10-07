@@ -13,6 +13,13 @@ const Admin = () => {
 
   return (
     <div className="bg-gray-100">
+      <div className="flex items-center justify-end mb-4">
+        <h1 className="text-2xl font-bold">Account</h1>
+        <div className="ml-4">
+          {/* Add your account profile component or image here */}
+    
+        </div>
+      </div>
       <div className="pt-4 pl-[1rem] flex flex-row space-x-4">
         {cardData.map((card, index) => (
           <div key={index} className="flex flex-col items-center justify-center rounded-lg border border-green-500 bg-white p-4 w-[18%]">

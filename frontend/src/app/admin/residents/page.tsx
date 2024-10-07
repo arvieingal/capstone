@@ -21,7 +21,7 @@ const Residents = () => {
       <h1 className="text-2xl font-bold text-center mb-6">Manage Residents</h1>
       <div className='flex flex-col md:flex-row gap-2 mb-4 pt-[2rem]'>
         <button 
-          className='bg-green-700 text-white px-4 py-2 rounded-md w-full md:w-[10rem]'
+          className='bg-green-800 text-white px-4 py-2 rounded-md w-full md:w-[10rem]'
           onClick={handleAddResidents}
         >
           Add Residents

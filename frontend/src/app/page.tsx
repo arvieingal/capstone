@@ -4,7 +4,7 @@ import Image from "next/image";
 import Navbar from "@/components/UserNavbar";
 import { useRouter } from "next/navigation";
 import LoginModal from "@/components/LoginModal";
-import UserNavbar from "@/components/UserNavbar";
+
 type DataProps = {
   message: String;
 };
@@ -25,8 +25,6 @@ export default function Dashboard() {
 
   return (
     <>
-      <div className="p-4">
-      </div>
       <div className="flex h-[60rem]">
         <div className="pl-[4rem] pt-[20rem]">
           <div className="w-[60rem]">
