@@ -63,6 +63,9 @@ const SignupModal: React.FC<SignupModalProps> = ({ onClose, onSwitchToLogin }) =
     setCurrentStep(2); 
   };
 
+  const handleBack = () => {
+    onClose(); // Close the modal when back is clicked
+  };
   
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -89,13 +92,12 @@ const SignupModal: React.FC<SignupModalProps> = ({ onClose, onSwitchToLogin }) =
       const responseData = await response.json(); // Parse the JSON response
   
       if (response.ok) {
-        // Show the success message and proceed
-        alert(responseData.message);  // This will show "Signup successful"
-        onClose();  // Assuming this closes the signup form
-        router.push('/');  // Redirect to the homepage after successful signup
+        alert(responseData.message);  
+        onClose();  
+        router.push('/'); 
       } else {
-        // If there's an error from the server, show the error message
-        alert(responseData.message);  // Display the error message from the server
+     
+        alert(responseData.message);  
       }
     } catch (error) {
       console.error("Signup error:", error);
@@ -108,7 +110,7 @@ const SignupModal: React.FC<SignupModalProps> = ({ onClose, onSwitchToLogin }) =
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
       <div ref={modalRef} className="w-full max-w-[30rem] rounded-2xl bg-white p-8 shadow-lg">
-        <h2 className="mb-6 text-center text-2xl font-semibold">{currentStep === 1 ? "Sign Up - Step 1" : "Sign Up - Step 2"}</h2>
+        <h2 className="mb-6 text-center text-2xl font-semibold">{currentStep === 2 ? "Sign Up - Step 1" : "Sign Up - Step 2"}</h2>
         <form onSubmit={currentStep === 1 ? handleNext : handleSubmit}>
           {currentStep === 1 && (
             // First Form
@@ -203,17 +205,15 @@ const SignupModal: React.FC<SignupModalProps> = ({ onClose, onSwitchToLogin }) =
               {/* Next Button */}
               <button
                 type="submit"
-                className="w-full rounded-lg bg-[#165B4B] py-2 text-white transition duration-200 hover:bg-green-800"
+                className="w-full rounded-lg bg-[#165B4B] py-2 text-white transition duration-200 hover:bg-green-800 flex items-center justify-center"
               >
-                Next
+                Next <span className="ml-2">&#8594;</span> 
               </button>
             </div>
           )}
           {currentStep === 2 && (
             // Second Form
             <div>
-              {/* Password Input */}
-              {/* Address (Municipality) Dropdown */}
               <div className="mb-4">
                 <label htmlFor="addressMunicipality" className="block text-sm font-medium text-gray-700">
                   Municipality
@@ -243,40 +243,8 @@ const SignupModal: React.FC<SignupModalProps> = ({ onClose, onSwitchToLogin }) =
                   className="w-full rounded-lg border border-gray-300 px-4 py-2 focus:outline-none focus:ring-1 focus:ring-green-500"
                   required
                 >
-                  <option value="">Select Barangay</option>
-                  <option value="Ablayan">Ablayan</option>
-                  <option value="Babayongan">Babayongan</option>
-                  <option value="Balud">Balud</option>
-                  <option value="Banhigan">Banhigan</option>
-                  <option value="Bulak">Bulak</option>
-                  <option value="Caleriohan">Caleriohan</option>
-                  <option value="Caliongan">Caliongan</option>
-                  <option value="Casay">Casay</option>
-                  <option value="Catolohan">Catolohan</option>
-                  <option value="Cawayan">Cawayan</option>
-                  <option value="Consolacion">Consolacion</option>
-                  <option value="Coro">Coro</option>
-                  <option value="Dugyan">Dugyan</option>
-                  <option value="Dumalan">Dumalan</option>
-                  <option value="Jolomaynon">Jolomaynon</option>
-                  <option value="Lanao">Lanao</option>
-                  <option value="Langkas">Langkas</option>
+                 
                   <option value="Lumbang">Lumbang</option>
-                  <option value="Malones">Malones</option>
-                  <option value="Maloray">Maloray</option>
-                  <option value="Mananggal">Mananggal</option>
-                  <option value="Manlapay">Manlapay</option>
-                  <option value="Mantalongon">Mantalongon</option>
-                  <option value="Nalhub">Nalhub</option>
-                  <option value="Obo">Obo</option>
-                  <option value="Obong">Obong</option>
-                  <option value="Panas">Panas</option>
-                  <option value="Poblacion">Poblacion</option>
-                  <option value="Sacsac">Sacsac</option>
-                  <option value="Salug">Salug</option>
-                  <option value="Tabon">Tabon</option>
-                  <option value="Tapun">Tapun</option>
-                  <option value="Tuba">Tuba</option>
                 </select>
               </div>
 
@@ -304,11 +272,7 @@ const SignupModal: React.FC<SignupModalProps> = ({ onClose, onSwitchToLogin }) =
                   <option value="Guiso">Guiso</option>
                 </select>
               </div>
-            </div>
-          )}
-          {currentStep === 2 && (
-            // Second Form
-            <div>
+
               {/* Password Input */}
               <div className="mb-4">
                 <label htmlFor="password" className="block text-sm font-medium text-gray-700">
@@ -362,12 +326,22 @@ const SignupModal: React.FC<SignupModalProps> = ({ onClose, onSwitchToLogin }) =
               {/* Submit Button */}
               <button
                 type="submit"
-                className="w-full rounded-lg bg-[#165B4B] py-2 text-white transition duration-200 hover:bg-green-800"
+                className="w-full rounded-lg bg-[#165B4B] py-2 text-white transition duration-200  hover:bg-green-800 flex items-center justify-center"
               >
-                Sign Up
+                Sign Up <span className="ml-2">&#8594;</span> 
               </button>
             </div>
+            
           )}
+           {/* Back Button */}
+           <button
+                type="button"
+                onClick={handleBack} 
+                className="w-full rounded-lg bg-gray-300 py-2 text-black transition duration-200 hover:bg-gray-400 mt-2" 
+              >
+                Back
+              </button>
+
         </form>
         <p className="mt-4 text-sm text-gray-600 flex justify-center">
           Already have an account?{" "}

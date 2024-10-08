@@ -6,10 +6,10 @@ import { usePathname, useRouter } from "next/navigation";
 
 const AdminSidebar = () => {
   const pathname = usePathname();
-
+  const router = useRouter();
   const isActive = (path: string) => pathname === path;
   const handleLogout = () => {
-    // Add your logout logic here
+    router.push("/");
   };
 
   return (
@@ -21,7 +21,9 @@ const AdminSidebar = () => {
               <Image src="/admin/home.svg" alt="Home" width={40} height={20} />
               <Link href="/admin">
                 <span
-                  className={`pl-[1rem] ${isActive("/admin") ? "underline" : ""}`}
+                  className={`pl-[1rem] ${
+                    isActive("/admin") ? "underline" : ""
+                  }`}
                 >
                   Dashboard
                 </span>
@@ -36,7 +38,9 @@ const AdminSidebar = () => {
               />
               <Link href="/admin/users">
                 <span
-                  className={`pl-[1.5rem] ${isActive("/admin/users") ? "underline" : ""}`}
+                  className={`pl-[1.5rem] ${
+                    isActive("/admin/users") ? "underline" : ""
+                  }`}
                 >
                   Users
                 </span>
@@ -52,7 +56,9 @@ const AdminSidebar = () => {
               />
               <Link href="/admin/events">
                 <span
-                  className={`pl-[1.5rem] ${isActive("/admin/events") ? "underline" : ""}`}
+                  className={`pl-[1.5rem] ${
+                    isActive("/admin/events") ? "underline" : ""
+                  }`}
                 >
                   Events
                 </span>{" "}
@@ -62,7 +68,9 @@ const AdminSidebar = () => {
               <Image src="/admin/work.svg" alt="Jobs" width={35} height={20} />
               <Link href="/admin/job">
                 <span
-                  className={`pl-[1.5rem] ${isActive("/admin/job") ? "underline" : ""}`}
+                  className={`pl-[1.5rem] ${
+                    isActive("/admin/job") ? "underline" : ""
+                  }`}
                 >
                   Jobs
                 </span>
@@ -77,7 +85,9 @@ const AdminSidebar = () => {
               />
               <Link href="/admin/library">
                 <span
-                  className={`pl-[1.5rem] ${isActive("/admin/library") ? "underline" : ""}`}
+                  className={`pl-[1.5rem] ${
+                    isActive("/admin/library") ? "underline" : ""
+                  }`}
                 >
                   Library
                 </span>
@@ -92,7 +102,9 @@ const AdminSidebar = () => {
               />
               <Link href="/admin/residents">
                 <span
-                  className={`pl-[1.5rem] ${isActive("/admin/residents") ? "underline" : ""}`}
+                  className={`pl-[1.5rem] ${
+                    isActive("/admin/residents") ? "underline" : ""
+                  }`}
                 >
                   Residents
                 </span>
@@ -107,16 +119,26 @@ const AdminSidebar = () => {
               />
               <Link href="/admin/documents">
                 <span
-                  className={`pl-[1.5rem] ${isActive("/admin/documents") ? "underline" : ""}`}
+                  className={`pl-[1.5rem] ${
+                    isActive("/admin/documents") ? "underline" : ""
+                  }`}
                 >
                   Documents
                 </span>
               </Link>
             </div>
-            <div className="flex items-center pl-[1rem] text-l pt-[18rem] font-medium cursor-pointer" onClick={handleLogout}>
-                <Image src="/admin/logout.png" alt="Logout" width={30} height={20} />
-                <span className="pl-[1.5rem]">Logout</span>
-              </div>
+            <div
+              className="flex items-center pl-[1rem] text-l pt-[18rem] font-medium cursor-pointer gap-2"
+              onClick={handleLogout}
+            >
+              <span className="pl-[1.5rem]">Logout</span>
+              <Image
+                src="/admin/logout.png"
+                alt="Logout"
+                width={30}
+                height={20}
+              />
+            </div>
           </div>
         </div>
       </aside>

@@ -6,8 +6,8 @@ import axios from 'axios';
 interface Event {
   _id: string;
   event_title: string;
-  startDate: string;
-  endDate: string;
+  start_time: string;
+  end_time: string;
   description: string;
   location: string;
   attendees: string;
@@ -59,10 +59,11 @@ const Events = () => {
         <thead>
           <tr className='bg-green-800 text-white '>
             <th className='border border-gray-300 p-2 font-light'>Event Title</th>
-            <th className='border border-gray-300 p-2 font-light'>Start Date</th>
-            <th className='border border-gray-300 p-2 font-light'>End Date</th>
-            <th className='border border-gray-300 p-2 font-light'>Location</th>
+            <th className='border border-gray-300 p-2 font-light'>Start Time</th>
+            <th className='border border-gray-300 p-2 font-light'>End Time</th>
             <th className='border border-gray-300 p-2 font-light'>Description</th>
+            <th className='border border-gray-300 p-2 font-light'>Location</th>
+            <th className='border border-gray-300 p-2 font-light'>Attendees</th>
             <th className='border border-gray-300 p-2 font-light'>Actions</th>
           </tr>
         </thead>
@@ -71,10 +72,11 @@ const Events = () => {
             .map(event => (
             <tr key={event._id}>
               <td className='border border-gray-300 p-2'>{event.event_title}</td>
-              <td className='border border-gray-300 p-2'>{event.startDate}</td>
-              <td className='border border-gray-300 p-2'>{event.endDate}</td>
-              <td className='border border-gray-300 p-2'>{event.location}</td>
+              <td className='border border-gray-300 p-2'>{event.start_time}</td>
+              <td className='border border-gray-300 p-2'>{event.end_time}</td>
               <td className='border border-gray-300 p-2'>{event.description}</td>
+              <td className='border border-gray-300 p-2'>{event.location}</td>
+              <td className='border border-gray-300 p-2'>{event.attendees}</td>
               <td className='border border-gray-300 p-2'>
                 <button 
                   className='bg-red-500 text-white px-2 py-1 rounded-md'
