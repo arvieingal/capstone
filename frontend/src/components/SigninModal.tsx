@@ -17,7 +17,7 @@ const SignupModal: React.FC<SignupModalProps> = ({ onClose, onSwitchToLogin }) =
     email: "",
     phoneNo: "",  
     employmentStatus: "",  
-    addressMunicipality: "Cebu", 
+    addressMunicipality: "Dalaguete", 
     barangay: "", 
     sitio: "",  
     password: "",
@@ -72,11 +72,11 @@ const SignupModal: React.FC<SignupModalProps> = ({ onClose, onSwitchToLogin }) =
     
 
     if (formData.password !== formData.confirmPassword) {
-      alert("Passwords do not match");
+      ("Passwords do not match");
       return;
     }
     if (!formData.agreeTerms) {
-      alert("Please agree to the terms and conditions");
+      ("Please agree to the terms and conditions");
       return;
     }
   
@@ -92,16 +92,16 @@ const SignupModal: React.FC<SignupModalProps> = ({ onClose, onSwitchToLogin }) =
       const responseData = await response.json(); // Parse the JSON response
   
       if (response.ok) {
-        alert(responseData.message);  
+        (responseData.message);  
         onClose();  
         router.push('/'); 
       } else {
      
-        alert(responseData.message);  
+        (responseData.message);  
       }
     } catch (error) {
       console.error("Signup error:", error);
-      alert("An error occurred during signup");
+      ("An error occurred during signup");
     }
   };
   

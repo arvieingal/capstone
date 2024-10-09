@@ -1,6 +1,10 @@
 "use client";
 import React, { useState } from "react";
 import Button from "@/components/AdminButton";
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
+const MySwal = withReactContent(Swal);
+import SweetAlert from '@/components/SweetAlert'
 
 const Add = () => {
   const [formData, setFormData] = useState({
@@ -9,7 +13,7 @@ const Add = () => {
     email: "",
     phone_number: "",  
     employment_status: "",  
-    Municipality: "Cebu", 
+    Municipality: "Dalaguete", 
     barangay: "Lumbang", 
     sitio: "",
     role: "", // Included role in required fields
@@ -34,19 +38,20 @@ const Add = () => {
       formData.status,
     ];
     
-    const allFieldsFilled = requiredFields.every(value => value !== "");
-    
-    if (allFieldsFilled) {
-      // Show an alert when the user is added
-      alert("User Added");
-      // Implement the logic to add a user
-      console.log("User added:", formData);
-    } else {
-      // Alert if not all required fields are filled
-      alert("Please fill in all required fields before adding a user.");
-    }
-  }
-
+    const handleUserAdd = async () => {
+      const allFieldsFilled = requiredFields.every(value => value !== "");
+      
+      if (allFieldsFilled) {
+        const result = await SweetAlert.showTheSuccess("Are you sure you want to add this user?");
+        if (result) {
+          await SweetAlert.showTheSuccess("User added successfully!");
+          console.log("User added:", formData);
+        }
+      } else {
+        await SweetAlert.showTheSuccess("Please fill in all required fields before adding a user.");
+      }
+    } 
+  };
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value, type, checked } = e.target as HTMLInputElement | HTMLSelectElement; // Explicitly type the target
     setFormData(prev => ({
@@ -56,16 +61,15 @@ const Add = () => {
   };
 
   function handleCancel(): void {
-    // Implement the logic to cancel the action
     console.log("Action cancelled");
   }
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Implement the logic to submit the form data
     console.log("Form submitted:", formData);
   }
-
+  
+  
   return (
     <div className="w-full px-4 sm:px-6 lg:px-8">
       <div className="w-full text-center">
@@ -238,7 +242,7 @@ const Add = () => {
             <Button variant="cancel" onClick={handleCancel}>
               Cancel
             </Button>
-            <Button variant="add" onClick={handleAdd}>
+            <Button variant="add"  type="submit">
               Add User
             </Button>
           </div>
