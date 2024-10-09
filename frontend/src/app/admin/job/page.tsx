@@ -7,7 +7,6 @@ const jobsData = [
   { id: 1, title: 'Software Engineer', company: 'Tech Co', status: 'Open' },
   { id: 2, title: 'Product Manager', company: 'Startup Inc', status: 'Closed' },
   { id: 3, title: 'UX Designer', company: 'Design Studio', status: 'Open' },
-  
 ]
 
 const Jobs = () => {
