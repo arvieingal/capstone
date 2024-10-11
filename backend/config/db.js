@@ -1,20 +1,42 @@
 import mysql from 'mysql';
 
-// Create a connection to the database
-const connection = mysql.createConnection({
+// Create a connection pool
+const pool = mysql.createPool({
   host: 'localhost',
   user: 'root',
   password: '',
   database: 'eserbisyo',
+  connectionLimit: 10, // Maximum number of connections in the pool
 });
 
-// Connect to the database
-connection.connect((err) => {
+// To handle database connection errors more gracefully
+pool.getConnection((err, connection) => {
   if (err) {
-    console.error('Error connecting to the database: ' + err.stack);
-    return;
+    if (err.code === 'PROTOCOL_CONNECTION_LOST') {
+      console.error('Database connection was closed.');
+    }
+    if (err.code === 'ER_CON_COUNT_ERROR') {
+      console.error('Database has too many connections.');
+    }
+    if (err.code === 'ECONNREFUSED') {
+      console.error('Database connection was refused.');
+    }
   }
-  console.log('Connected to the database with ID ' + connection.threadId);
+  
+  if (connection) connection.release(); // Release the connection back to the pool
+  return;
 });
 
-export default connection;  // Export the connection using ES6
+// Promisify for Node.js async/await
+export const query = (sql, params) => {
+  return new Promise((resolve, reject) => {
+    pool.query(sql, params, (error, results) => {
+      if (error) {
+        return reject(error);
+      }
+      resolve(results);
+    });
+  });
+};
+
+export default pool;

@@ -27,7 +27,7 @@ const Users = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await axios.get("http://localhost:3001/api/user");
+        const response = await axios.get("http://localhost:8000/api/user");
         setUsers(response.data);
         console.log(response, "the data");
       } catch (error) {
@@ -60,7 +60,7 @@ const Users = () => {
     );
     if (confirmDelete) {
       try {
-        await axios.delete(`http://localhost:3001/api/user/${id}`);
+        await axios.delete(`http://localhost:8000/api/user/${id}`);
         setUsers(users.filter((user) => user._id !== id));
         console.log("User deleted successfully");
       } catch (error) {
@@ -76,16 +76,17 @@ const Users = () => {
   return (
     <div className="flex flex-col md:flex-row">
       <div className="flex-1 p-4 md:pt-[5rem] md:px-8">
-        <h1 className="text-xl md:text-2xl font-semibold mb-4 md:mb-6 text-center">
+        <h1 className="text-2xl md:text-2xl font-semibold mb-4 md:mb-6 text-center mt-[4rem]">
           Manage Users
         </h1>
-        <div className="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-4 mb-4 md:mb-6">
-          <button
-            className="bg-green-800 text-white px-4 py-2 rounded-md mb-2 md:mb-0 w-[10rem]"
+        <div className="w-full flex flex-row md:flex-row items-center md:space-y-0 md:space-x-4 md:mb-6 gap-2">
+        <button
+            className="bg-green-800 w-[8rem] text-white  py-2 rounded-md"
             onClick={handleAddUser}
           >
             Add User
           </button>
+          <div className="w-full">
           <input
             type="text"
             placeholder="Search users..."
@@ -93,8 +94,9 @@ const Users = () => {
             onChange={handleSearch}
             className="w-full md:flex-grow border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-1 focus:ring-green-500"
           />
+          </div>
         </div>
-        <div className="overflow-x-auto rounded-lg">
+        <div className="overflow-x-auto md:overflow-x-scroll rounded-lg py-4">
           <table className="min-w-full bg-white border border-gray-300 rounded-lg">
             <thead className="bg-green-800 text-white">
               <tr>

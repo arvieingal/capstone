@@ -31,7 +31,7 @@ const AddResidents = () => {
     <div className="p-6">
       <h1 className="text-2xl font-bold text-center mb-6">Add New Citizen</h1>
       <form onSubmit={handleSubmit} className="max-w-lg mx-auto">
-        <div className="mb-4">
+      <div className="w-full lg:w-1/2 space-y-6">
           <label htmlFor="fullName" className="block mb-2">Full Name</label>
           <input
             type="text"

@@ -226,7 +226,7 @@ const SignupModal: React.FC<SignupModalProps> = ({ onClose, onSwitchToLogin }) =
                   className="w-full rounded-lg border border-gray-300 px-4 py-2 focus:outline-none focus:ring-1 focus:ring-green-500"
                   required
                 >
-                  <option value="Cebu">Cebu</option>
+                  <option value="Cebu">Dalaguete</option>
                 </select>
               </div>
 

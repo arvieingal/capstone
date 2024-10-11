@@ -43,7 +43,6 @@ export default function ScheduleEvent() {
         e.preventDefault()
 
         if (!session || !session.accessToken) return;
-
         const eventDetailsWithTimezone = {
             ...eventDetails,
             start: `${eventDetails.start}:00+08:00`,
@@ -107,7 +106,7 @@ export default function ScheduleEvent() {
     }
 
     return (
-        <div className="w-full px-4 sm:px-6 lg:px-8 ">
+        <div className="w-full px-4 sm:px-6 lg:px-8 pt-[4rem] ">
         <div className="w-full text-center">
           <h1 className="mb-8 flex items-center justify-center pt-8 sm:pt-12 text-2xl font-bold">
           ADD EVENTS
@@ -115,7 +114,7 @@ export default function ScheduleEvent() {
         </div>
         <div className="w-full space-y-6">
             <form action="" onSubmit={handleScheduleEvent} className='space-y-8 p-4 '>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4"> 
+                <div className="grid grid-cols-2 md:grid-cols-2 gap-4"> 
                     <div>
                         <label htmlFor="summary" className="block mb-1">Event Title</label>
                         <input

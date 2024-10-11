@@ -73,11 +73,11 @@ const Add = () => {
   return (
     <div className="w-full px-4 sm:px-6 lg:px-8">
       <div className="w-full text-center">
-        <h1 className="mb-8 flex items-center justify-center pt-8 sm:pt-12 text-2xl font-bold">
+        <h1 className="mb-8 flex items-center justify-center pt-[5rem] sm:pt-12 text-2xl font-bold">
         ADD USER
         </h1>
       </div>
-      <form className="flex flex-col lg:flex-row w-full gap-8 lg:gap-16 max-w-6xl mx-auto mt-[8rem]" onSubmit={handleSubmit}>
+      <form className="flex flex-row lg:flex-row w-full gap-8 lg:gap-16 max-w-6xl mx-auto mt-[8rem]" onSubmit={handleSubmit}>
         <div className="w-full lg:w-1/2 space-y-6">
           <div>
           <label htmlFor="fullName" className="block text-sm font-medium text-gray-700">
@@ -165,7 +165,7 @@ const Add = () => {
                   className="w-full max-w-md rounded-lg border px-3 py-2"
                   required
                 >
-                  <option value="Cebu">Cebu</option>
+                  <option value="Cebu">Dalaguete</option>
                 </select>
           </div>
           <div>

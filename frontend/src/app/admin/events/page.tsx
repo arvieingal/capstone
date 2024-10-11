@@ -5,10 +5,11 @@ import axios from 'axios';
 
 interface Event {
   _id: string;
-  event_title: string;
-  start_time: string;
-  end_time: string;
+  summary: string;
   description: string;
+  start: string;
+  end: string;
+  
   location: string;
   attendees: string;
 }
@@ -40,9 +41,9 @@ const Events = () => {
   return (
     <div className='container mx-auto pt-[4rem]'>
       <h1 className='text-2xl font-bold mb-4 flex items-center justify-center'>Manage Events</h1>
-      <div className='flex flex-col md:flex-row gap-2 mb-4 pt-[2rem]'>
+      <div className='flex flex-row md:flex-row gap-2 mb-4 pt-[2rem]'>
         <button 
-          className='bg-green-800 text-white px-4 py-2 rounded-md w-full md:w-[10rem]'
+          className='bg-green-800 w-[10rem] text-white px-4 py-2 rounded-md  md:w-[10rem]'
           onClick={handleAddEvent}
         >
           Add Events
@@ -68,12 +69,12 @@ const Events = () => {
           </tr>
         </thead>
         <tbody>
-          {events.filter(event => event.event_title.toLowerCase().includes(searchTerm.toLowerCase()))
+          {events.filter(event => event.summary.toLowerCase().includes(searchTerm.toLowerCase()))
             .map(event => (
             <tr key={event._id}>
-              <td className='border border-gray-300 p-2'>{event.event_title}</td>
-              <td className='border border-gray-300 p-2'>{event.start_time}</td>
-              <td className='border border-gray-300 p-2'>{event.end_time}</td>
+              <td className='border border-gray-300 p-2'>{event.summary}</td>
+              <td className='border border-gray-300 p-2'>{event.start}</td>
+              <td className='border border-gray-300 p-2'>{event.end}</td>
               <td className='border border-gray-300 p-2'>{event.description}</td>
               <td className='border border-gray-300 p-2'>{event.location}</td>
               <td className='border border-gray-300 p-2'>{event.attendees}</td>
